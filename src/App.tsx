@@ -1,4 +1,5 @@
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+import { Generator } from './components/Generator';
 
 export function App() {
 	return (
@@ -9,9 +10,7 @@ export function App() {
 				</header>
 
 				<main className='flex-1 flex justify-between gap-4 w-4/5 max-w-6xl mx-auto mt-16'>
-					<section className='w-full bg-amethyst-300 font-noto p-6 rounded-xl shadow-sm shadow-tidal-200'>
-						<h1 className='font-poppins text-xl font-bold text-center pt-6'>GENERATOR</h1>
-					</section>
+					<Generator />
 
 					<aside className='w-[480px] bg-amethyst-300 font-noto p-6 rounded-xl shadow-sm shadow-tidal-200'>
 						<h1 className='font-poppins text-xl font-bold text-center pt-6'>SAVED PASSWORDS</h1>

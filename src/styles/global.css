@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*::selection {
+	@apply bg-amethyst-900 text-amethyst-50;
+}
+
+input[type='range']::-moz-range-thumb {
+	@apply bg-amethyst-800 border border-amethyst-950;
+}
