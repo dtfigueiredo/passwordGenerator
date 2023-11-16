@@ -11,10 +11,6 @@ export function App() {
 
 				<main className='flex-1 flex justify-between gap-4 w-4/5 max-w-6xl mx-auto mt-16'>
 					<Generator />
-
-					<aside className='w-[480px] bg-amethyst-300 font-noto p-6 rounded-xl shadow-sm shadow-tidal-200'>
-						<h1 className='font-poppins text-xl font-bold text-center pt-6'>SAVED PASSWORDS</h1>
-					</aside>
 				</main>
 
 				<footer className='bg-amethyst-950 font-poppins text-center text-amethyst-50 py-2 mt-16'>
