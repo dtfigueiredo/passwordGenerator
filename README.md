@@ -14,7 +14,7 @@ Refactoring an old project ideia with new resources, i.e. changing the Math.Rand
 
 ## Live Project
 
-- [Clique aqui](https://fastpasswordgenerator.netlify.app/)
+- [Click here](https://fastpasswordgenerator.netlify.app/)
 
 ## Installation
 
