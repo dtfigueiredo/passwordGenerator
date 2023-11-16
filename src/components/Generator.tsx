@@ -1,4 +1,4 @@
-import { CopySimple } from '@phosphor-icons/react';
+import { CopySimple, GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { useEffect, useState } from 'react';
 import { passwordGenerator } from '../assets/pwdGenerator';
 import { CheckInput } from './CheckInput';
@@ -20,6 +20,14 @@ export function Generator() {
 		setTimeout(() => {
 			setCopiedToClipboard(false);
 		}, 2000);
+	}
+
+	function handleIncreaseInputLength() {
+		setInputLength((prev) => (prev + 1 >= 32 ? 32 : prev + 1));
+	}
+
+	function handleDecreaseInputLength() {
+		setInputLength((prev) => (prev - 1 <= 16 ? 16 : prev - 1));
 	}
 
 	function handleGeneratePassword() {
@@ -61,69 +69,86 @@ export function Generator() {
 	]);
 
 	return (
-		<section className='w-full max-w-4xl bg-amethyst-300 font-noto p-6 mx-auto rounded-xl shadow shadow-bunker-600'>
-			<h1 className='font-poppins text-xl font-bold text-center pt-6'>
-				GENERATOR
-			</h1>
+		<section
+			className='w-4/5 max-w-4xl flex flex-col justify-center items-center py-20 px-4 mt-14 mx-auto
+			bg-layout-black rounded-2xl shadow-sm shadow-layout-mediumgray relative
+				before:absolute before:h-4/5 before:w-2 before:left-[-4px] before:bg-layout-orange'>
+			<span className='text-white text-xl'>Your password is</span>
 
-			<div
-				className='w-4/5 max-w-4xl flex flex-col justify-center items-center gap-8 p-12 mt-8 mx-auto bg-tidal-300 rounded-xl
-				shadow shadow-bunker-600'>
-				<div className='w-full gap-4 py-4 px-6 bg-amethyst-50 border border-amethyst-400 rounded-xl relative'>
-					<p className='w-11/12 break-words text-sm'>{password}</p>
+			{/* password display */}
+			<div className='w-4/5 max-w-xl gap-4 py-4 px-6 mt-4 bg-zinc-950 text-white shadow-sm shadow-layout-mediumgray rounded-2xl relative'>
+				<p className='w-11/12 break-words text-sm'>{password}</p>
+				<button
+					className='absolute bottom-4 right-6 transition-all hover:text-layout-orange'
+					onClick={handleCopyToClipboard}>
+					<CopySimple size={24} />
+				</button>
+			</div>
+			{copiedToClipboard && <Feedback />}
+
+			<div className='flex justify-center items-start mt-4 gap-6'>
+				<CheckInput
+					id='Uppercase'
+					label='Uppercase'
+					updateCheckedState={updateCheckedState}
+				/>
+
+				<CheckInput
+					id='Symbols'
+					label='Symbols'
+					updateCheckedState={updateCheckedState}
+				/>
+
+				<CheckInput
+					id='Numbers'
+					label='Numbers'
+					updateCheckedState={updateCheckedState}
+				/>
+			</div>
+
+			{/* input length */}
+			<div className='flex items-center gap-4 mt-4 text-center text-white'>
+				<label htmlFor='pwdLength'>Password Length:</label>
+
+				<div className='flex gap-4 text-white text-xl font-bold'>
 					<button
-						className='absolute bottom-4 right-6 transition-all hover:text-amethyst-600'
-						onClick={handleCopyToClipboard}>
-						<CopySimple size={24} />
+						className='hover:text-layout-orange disabled:text-layout-lightgray disabled:cursor-not-allowed'
+						disabled={inputLength === 16}
+						onClick={handleDecreaseInputLength}>
+						-
+					</button>
+					<p>{inputLength}</p>
+					<button
+						className='hover:text-layout-orange disabled:text-layout-lightgray disabled:cursor-not-allowed'
+						disabled={inputLength === 32}
+						onClick={handleIncreaseInputLength}>
+						+
 					</button>
 				</div>
-				{copiedToClipboard && <Feedback />}
+			</div>
+			{/*  */}
 
-				<div className='w-4/5 flex flex-col justify-start items-center gap-8'>
-					<div className='flex flex-col justify-center items-start gap-6'>
-						<CheckInput
-							id='Uppercase'
-							label='Uppercase'
-							updateCheckedState={updateCheckedState}
-						/>
+			<button
+				onClick={handleGeneratePassword}
+				className='min-w-[200px] gap-4 py-5 px-6 mt-16 bg-layout-orange text-white rounded-2xl transition-all hover:bg-amber-600'>
+				Regenerate Password
+			</button>
 
-						<CheckInput
-							id='Symbols'
-							label='Symbols'
-							updateCheckedState={updateCheckedState}
-						/>
-
-						<CheckInput
-							id='Numbers'
-							label='Numbers'
-							updateCheckedState={updateCheckedState}
-						/>
-					</div>
-
-					{/* range input */}
-					<div className='flex flex-col gap-4 text-center'>
-						<label htmlFor='pwdLength'>
-							Password Length:
-							<strong className='text-xl'> {inputLength}</strong>
-						</label>
-						<input
-							type='range'
-							min={16}
-							max={32}
-							defaultValue={inputLength}
-							onChange={(e) => setInputLength(+e.target.value)}
-							className='h-2 bg-bunker-100 border border-amethyst-950 appearance-none cursor-pointer rounded-xl'
-						/>
-					</div>
-					{/*  */}
-
-					<button
-						onClick={handleGeneratePassword}
-						className='w-full flex justify-center items-center gap-4 py-4 px-6 bg-amethyst-950 text-amethyst-50 hover:font-bold
-						rounded-xl transition-all hover:bg-amethyst-900'>
-						Generate Password
-					</button>
-				</div>
+			<div className='flex gap-2 absolute bottom-2 text-white'>
+				<a
+					href='https://github.com/dtfigueiredo'
+					target='_blank'
+					rel='noopener noreferrer'
+					className='transition-all hover:text-layout-orange'>
+					<GithubLogo size={24} />
+				</a>
+				<a
+					href='https://www.linkedin.com/in/dtfigueiredo/'
+					target='_blank'
+					rel='noopener noreferrer'
+					className='transition-all hover:text-layout-orange'>
+					<LinkedinLogo size={24} />
+				</a>
 			</div>
 		</section>
 	);

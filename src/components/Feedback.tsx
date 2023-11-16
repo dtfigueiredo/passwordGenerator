@@ -1,6 +1,6 @@
 export function Feedback() {
 	return (
-		<div className='mt-[-16px] text-bunker-700 underline'>
+		<div className='mt-4 text-layout-mediumgray underline'>
 			Password copied to clipboard.
 		</div>
 	);

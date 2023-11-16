@@ -3,9 +3,17 @@
 @tailwind utilities;
 
 *::selection {
-	@apply bg-amethyst-900 text-amethyst-50;
+	@apply bg-layout-orange text-zinc-950;
 }
 
-input[type='range']::-moz-range-thumb {
-	@apply bg-amethyst-800 border border-amethyst-950;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+	-moz-appearance: textfield;
 }

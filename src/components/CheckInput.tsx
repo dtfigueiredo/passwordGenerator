@@ -16,16 +16,20 @@ export function CheckInput({ id, label, updateCheckedState }: InputProps) {
 	}
 
 	return (
-		<div className='flex gap-2'>
+		<div className='flex gap-4'>
 			<input
 				id={label}
 				name={label}
 				type='checkbox'
 				checked={isChecked}
 				onChange={handleInputCheck}
-				className='accent-amethyst-800'
+				className='accent-layout-orange'
 			/>
-			<label htmlFor={label}>{label}</label>
+			<label
+				htmlFor={label}
+				className='text-white'>
+				{label}
+			</label>
 		</div>
 	);
 }
