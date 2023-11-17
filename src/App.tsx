@@ -4,7 +4,7 @@ import { Generator } from './components/Generator';
 export function App() {
 	return (
 		<section className='bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-layout-darkgray to-zinc-900'>
-			<div className='h-screen flex flex-col justify-center items-center'>
+			<div className='h-[100dvh] md:h-screen flex flex-col justify-center items-center'>
 				<p className='flex items-end gap-2 text-3xl'>
 					<span className='text-layout-mediumgray'>
 						<Lock size={36} />

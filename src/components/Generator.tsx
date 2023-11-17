@@ -76,7 +76,7 @@ export function Generator() {
 			<p className='text-white text-xl'>Your password is</p>
 
 			{/* password display */}
-			<div className='w-11/12 md:w-4/5 max-w-xl gap-4 py-4 px-3 md:px-6 mt-4 bg-zinc-950 text-white shadow-sm shadow-layout-mediumgray rounded-2xl relative'>
+			<div className='w-11/12 md:w-4/5 max-w-xl gap-4 py-4 px-3 md:px-6 mt-6 md:mt-4 bg-zinc-950 text-white shadow-sm shadow-layout-mediumgray rounded-2xl relative'>
 				<p className='w-11/12 break-words text-[10px] sm:text-sm md:text-base'>
 					{password}
 				</p>
@@ -89,7 +89,7 @@ export function Generator() {
 			{copiedToClipboard && <Feedback />}
 
 			{/* options checkbox */}
-			<section className='flex flex-col md:flex-row justify-center items-start mt-4 gap-6'>
+			<section className='flex flex-col md:flex-row justify-center items-start mt-6 md:mt-4 gap-8 md:gap-6'>
 				<CheckInput
 					id='Uppercase'
 					label='Uppercase'
@@ -110,10 +110,10 @@ export function Generator() {
 			</section>
 
 			{/* input length */}
-			<section className='flex flex-col mt-4 text-center text-white'>
+			<section className='flex flex-col mt-6 md:mt-4 text-center text-white'>
 				<div className='flex items-center gap-4'>
 					<span>Password Length:</span>
-					<div className='flex gap-4 text-white text-xl font-bold'>
+					<div className='flex gap-6 md:gap-4 text-white text-xl font-bold'>
 						<button
 							className='hover:text-layout-orange disabled:hidden'
 							disabled={inputLength === 16}
@@ -131,7 +131,9 @@ export function Generator() {
 						</button>
 					</div>
 				</div>
-				<span className='text-sm text-layout-lightgray'>Min: 16 - Max: 32</span>
+				<span className='text-sm text-layout-lightgray mt-2 md:mt-0'>
+					Min: 16 - Max: 32
+				</span>
 			</section>
 			{/*  */}
 
