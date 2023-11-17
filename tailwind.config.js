@@ -16,6 +16,9 @@ export default {
 				noto: ['Noto Sans Linear B', 'sans-serif'],
 				poppins: ['Poppins', 'sans-serif'],
 			},
+			height: {
+				screen: ['100vh', '100svh'],
+			},
 		},
 	},
 	plugins: [],
