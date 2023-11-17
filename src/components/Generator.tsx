@@ -139,7 +139,7 @@ export function Generator() {
 
 			<button
 				onClick={handleGeneratePassword}
-				className='min-w-[200px] gap-4 py-5 px-6 mt-16 bg-layout-orange text-layout-darkgray rounded-2xl transition-all hover:bg-amber-600'>
+				className='min-w-[200px] gap-4 py-5 px-6 mt-8 md:mt-14 bg-layout-orange text-layout-darkgray rounded-2xl transition-all hover:bg-amber-600'>
 				Regenerate Password
 			</button>
 
