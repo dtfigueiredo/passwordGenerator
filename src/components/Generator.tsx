@@ -70,7 +70,7 @@ export function Generator() {
 
 	return (
 		<main
-			className='w-4/5 max-w-4xl flex flex-col justify-center items-center py-20 px-4 mt-14 mx-auto
+			className='w-4/5 max-w-4xl flex flex-col justify-center items-center py-12 sm:py-16 md:py-20 px-4 mt-8 md:mt-14 mx-auto
 			bg-layout-black rounded-2xl shadow-sm shadow-layout-mediumgray relative
 				before:absolute before:h-4/5 before:w-2 before:left-[-4px] before:bg-layout-orange'>
 			<p className='text-white text-xl'>Your password is</p>
