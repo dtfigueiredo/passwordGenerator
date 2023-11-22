@@ -14,20 +14,25 @@ export function Generator() {
 	const [isSymbolsChecked, setIsSymbolsChecked] = useState<boolean>(false);
 	const [isNumbersChecked, setIsNumbersChecked] = useState<boolean>(false);
 
+	const MINPASSWORDLENGTH = 16;
+	const MAXPASSWORDLENGTH = 32;
+
 	function handleCopyToClipboard() {
-		setCopiedToClipboard(true);
-		navigator.clipboard.writeText(password);
-		setTimeout(() => {
-			setCopiedToClipboard(false);
-		}, 2000);
+		if (!copiedToClipboard) {
+			setCopiedToClipboard(true);
+			navigator.clipboard.writeText(password);
+			setTimeout(() => {
+				setCopiedToClipboard(false);
+			}, 2000);
+		}
 	}
 
 	function handleIncreaseInputLength() {
-		setInputLength((prev) => (prev + 1 >= 32 ? 32 : prev + 1));
+		setInputLength((prev) => (prev + 1 >= MAXPASSWORDLENGTH ? MAXPASSWORDLENGTH : prev + 1));
 	}
 
 	function handleDecreaseInputLength() {
-		setInputLength((prev) => (prev - 1 <= 16 ? 16 : prev - 1));
+		setInputLength((prev) => (prev - 1 <= MINPASSWORDLENGTH ? MINPASSWORDLENGTH : prev - 1));
 	}
 
 	function handleGeneratePassword() {
@@ -60,13 +65,7 @@ export function Generator() {
 
 	useEffect(() => {
 		handleGeneratePassword();
-	}, [
-		inputLength,
-		isUppercaseChecked,
-		isLowercaseChecked,
-		isSymbolsChecked,
-		isNumbersChecked,
-	]);
+	}, [inputLength, isUppercaseChecked, isLowercaseChecked, isSymbolsChecked, isNumbersChecked]);
 
 	return (
 		<main
@@ -77,9 +76,7 @@ export function Generator() {
 
 			{/* password display */}
 			<div className='w-11/12 md:w-4/5 max-w-xl gap-4 py-4 px-3 md:px-6 mt-6 md:mt-4 bg-zinc-950 text-white shadow-sm shadow-layout-mediumgray rounded-2xl relative'>
-				<p className='w-11/12 break-words text-[10px] sm:text-sm md:text-base'>
-					{password}
-				</p>
+				<p className='w-11/12 break-words text-[10px] sm:text-sm md:text-base'>{password}</p>
 				<button
 					className='absolute bottom-4 right-3 md:right-6 transition-all hover:text-layout-orange'
 					onClick={handleCopyToClipboard}>
@@ -131,9 +128,7 @@ export function Generator() {
 						</button>
 					</div>
 				</div>
-				<span className='text-sm text-layout-lightgray mt-2 md:mt-0'>
-					Min: 16 - Max: 32
-				</span>
+				<span className='text-sm text-layout-lightgray mt-2 md:mt-0'>Min: 16 - Max: 32</span>
 			</section>
 			{/*  */}
 
